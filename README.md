@@ -6,14 +6,14 @@ This is a Unity game prototype where the player fights a boss by performing sign
 HOW TO CONTRIBUTE
 
 1. Find the Hands of Valor Kanban GitHub project.
-2. Find an issue you'd like to work on from the Ready section, assign yourself to it, and put out a message in the Hands of Valor channel saying that you have chosen a task with the link to it. Make sure to tag the leads in this message.
+2. Find a task you'd like to work on from the Ready section, drag it to In Progress, assign yourself to it, and put out a message in the Hands of Valor channel saying that you have chosen a task with the link to it. Make sure to tag the leads in this message.
 4. Pull the latest changes from main: git pull
-5. Create a new branch off of main in this format: git checkout -b <your_github_username>-<issue_number>
+5. Create a new branch off of main in this format: git checkout -b <your_github_username>-<issue_number> (Ensure that this branch is linked to the task in the Hands of Valor Kanban)
 6. Make your changes and test.
 7. Create a commit with all of your changes: git commit -a -m "short description of your changes"
-8. Push your changes: git push
-9. From GitHub, open a PR. Write a more exhaustive description of your changes and what you have tested. Include a screen recording of your changes in action!
-10. Submit a link to your PR in the Hands of Valor channel and tag the leads. Merge your PR once you have their approval.
+8. Push your changes: git push (Ensure any merge conflicts are resolved)
+9. From GitHub, open a PR. Write a more exhaustive description of your changes and what you have tested. Include a screen recording of your changes in action! Also, drag your Kanban task into In Review. (Ensure any merge conflicts are resolved)
+10. Submit a link to your PR in the Hands of Valor channel and tag the leads. Merge your PR once you have their approval. After merging, move your Kanban task into Done.
 
 SETUP AND RUN INSTRUCTIONS
 
