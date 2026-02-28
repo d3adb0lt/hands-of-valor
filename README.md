@@ -3,14 +3,26 @@ GETTING STARTED
 PROJECT OVERVIEW
 This is a Unity game prototype where the player fights a boss by performing sign language gestures recognized by a sign language recognizer gesture toolkit. The game is currently being built and tested in the Unity Editor and targets desktop for now. During the fight, several word slots appear on screen and the player must sign the displayed words before they expire. A separate dodge word appears in the top right on its own timer and must be prioritized. Some rounds can spawn a critical word that expires faster, shows as red text, and deals extra damage. Boss health decreases when the player correctly signs a normal slot word, and the fight ends when boss HP reaches zero. Current state is playable end to end with a Start Screen button, a boss fight loop, dodge spawns, critical words, and a scene transition back to the start screen on victory. Player HP and Stamina are currently not implemented.
 
+HOW TO CONTRIBUTE
+
+Once you have an issue/task from the GitHub project, follow these steps:
+1. Pull the latest changes from main: git pull
+2. Create a new branch off of main in this format: git checkout -b <your_github_username>-<issue_number>
+3. Make your changes and test
+4. Create a commit with all of your changes: git commit -a -m "short description of your changes"
+5. Push your changes: git push
+6. From GitHub, open a PR. Write a more exhaustive description of your changes and what you tested. Include a screen recording of your changes in action!
+7. Notify one of the leads to take a look and then merge your PR once you have their approval.
+
 SETUP AND RUN INSTRUCTIONS
 
-Prerequisites
-1. Install Unity Hub.
-2. Install the Unity Editor version required by the project.
+Prerequisites 
+1. Clone the Repo.
+2. Install Unity Hub.
+3. Install the Unity Editor version required by the project.
    Open ProjectSettings/ProjectVersion.txt in the repo to see the exact Unity version string this project expects.
-3. Install Visual Studio.
-4. Follow the SLRTk setup instructions.
+4. Install Visual Studio.
+5. Follow the SLRTk setup instructions.
 
 Open the project
 1. In Unity Hub, click Add and select the repository folder.
@@ -115,26 +127,3 @@ COMMON FIXES AND TROUBLESHOOTING
 3. If the camera does not appear, restart unity.
 4. If the are numerous console errors when starting the game from the boss fight scene, click stop and then start the game from the start screen.
 5. If words spawn too fast or too slow, edit the timers in the Word Spawn Manager inspector.
-
-
-FIRST SAFE TASK, TINY CHANGE
-
-Task: adjust the critical spawn chance
-Goal: Make critical words appear more or less often.
-
-Files to change
-Assets/Scripts/WordSpawnManager.cs
-
-What to change
-1. Find the serialized field criticalChance.
-2. Change it from 0.2f to a new value.
-Example: set to 0.3f for 30 percent.
-
-How to verify
-1. Run StartScreenScene and start the fight.
-2. Watch for red critical words to appear more frequently.
-
-Alternative tiny task
-Edit the hardcoded word list used by the start button.
-File: Assets/Scripts/StartScreenController.cs
-Change the hardcodedWords list to add or remove entries like down or ear.
