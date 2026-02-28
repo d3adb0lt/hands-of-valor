@@ -1,18 +1,19 @@
 GETTING STARTED
 
 PROJECT OVERVIEW
-This is a Unity game prototype where the player fights a boss by performing sign language gestures recognized by a sign language recognizer gesture toolkit. The game is currently being built and tested in the Unity Editor and targets desktop for now. During the fight, several word slots appear on screen and the player must sign the displayed words before they expire. A separate dodge word appears in the top right on its own timer and must be prioritized. Some rounds can spawn a critical word that expires faster, shows as red text, and deals extra damage. Boss health decreases when the player correctly signs a normal slot word, and the fight ends when boss HP reaches zero. Current state is playable end to end with a Start Screen button, a boss fight loop, dodge spawns, critical words, and a scene transition back to the start screen on victory. Player HP and Stamina are currently not implemented.
+This is a Unity game prototype where the player fights a boss by performing sign language gestures recognized by a sign language recognizer gesture toolkit. During the fight, several word slots appear on screen and the player must sign the displayed words before they expire. A separate dodge word appears in the top right on its own timer and must be prioritized. Sometimes a critical word spawns that expires faster, shows as red text, and deals extra damage. Boss health decreases when the player correctly signs a normal slot word, and the fight ends when boss HP reaches zero. Player HP decreases if the player fails to sign the dodge word before it expires. If player HP reaches 0, the fight ends in defeat. If the player manages to sign the dodge word before it expires, their stamina will decrease. Once stamina reaches 0, they will no longer be able to dodge and subsequent boss attacks will deal damage regardless of whether or not the player signs the dodge word in time.
 
 HOW TO CONTRIBUTE
 
-Once you have an issue/task from the GitHub project, follow these steps:
-1. Pull the latest changes from main: git pull
-2. Create a new branch off of main in this format: git checkout -b <your_github_username>-<issue_number>
-3. Make your changes and test
-4. Create a commit with all of your changes: git commit -a -m "short description of your changes"
-5. Push your changes: git push
-6. From GitHub, open a PR. Write a more exhaustive description of your changes and what you tested. Include a screen recording of your changes in action!
-7. Notify one of the leads to take a look and then merge your PR once you have their approval.
+1. Find the Hands of Valor Kanban GitHub project.
+2. Find an issue you'd like to work on from the Ready section, assign yourself to it, and put out a message in the Hands of Valor channel saying that you have chosen a task with the link to it. Make sure to tag the leads in this message.
+4. Pull the latest changes from main: git pull
+5. Create a new branch off of main in this format: git checkout -b <your_github_username>-<issue_number>
+6. Make your changes and test.
+7. Create a commit with all of your changes: git commit -a -m "short description of your changes"
+8. Push your changes: git push
+9. From GitHub, open a PR. Write a more exhaustive description of your changes and what you have tested. Include a screen recording of your changes in action!
+10. Submit a link to your PR in the Hands of Valor channel and tag the leads. Merge your PR once you have their approval.
 
 SETUP AND RUN INSTRUCTIONS
 
