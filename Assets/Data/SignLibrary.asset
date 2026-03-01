@@ -1,0 +1,515 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac48eac3813bcc84a939be7fdb1b6591, type: 3}
+  m_Name: SignLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::SignLibrary
+  signs:
+  - word: after
+    clip: {fileID: 32900000, guid: ee27258d1d1e4ed459d50dfe800f66df, type: 3}
+  - word: airplane
+    clip: {fileID: 32900000, guid: 2d90046cd94b46044bafd3cac57eb010, type: 3}
+  - word: all
+    clip: {fileID: 32900000, guid: 33bd62e09c123264995d7c363cf7d156, type: 3}
+  - word: alligator
+    clip: {fileID: 32900000, guid: ba6dd028d412e7845afd24ca7c6c69a2, type: 3}
+  - word: animal
+    clip: {fileID: 32900000, guid: 5ddb3221f87e64a4fab0c482aeae32dc, type: 3}
+  - word: another
+    clip: {fileID: 32900000, guid: a0dbcff155f5d794ea16161b174f606a, type: 3}
+  - word: any
+    clip: {fileID: 32900000, guid: 5a70f5e6ea38a634e9fb692fa246c7f4, type: 3}
+  - word: apple
+    clip: {fileID: 32900000, guid: 3b14470dcd316234c9921107d472c2cf, type: 3}
+  - word: arm
+    clip: {fileID: 32900000, guid: 0a7e570867d203f4186d65eff86943f8, type: 3}
+  - word: aunt
+    clip: {fileID: 32900000, guid: 6581ccb8c9ec67446b8282e7d15e840d, type: 3}
+  - word: awake
+    clip: {fileID: 32900000, guid: 40437293b912a9941b9cfb72416a7a5a, type: 3}
+  - word: backyard
+    clip: {fileID: 32900000, guid: 6da5389fad59cfd48aa553a4755e02e5, type: 3}
+  - word: bad
+    clip: {fileID: 32900000, guid: 2e1d8874f13d6ea47a72c1323a4f3157, type: 3}
+  - word: balloon
+    clip: {fileID: 32900000, guid: 942cbc3179e009b4f824c9c4e2a8045f, type: 3}
+  - word: bath
+    clip: {fileID: 32900000, guid: f6808b842db798e459ff00c1848073a2, type: 3}
+  - word: because
+    clip: {fileID: 32900000, guid: 90567dd11940f084abf45cc588df93b7, type: 3}
+  - word: bed
+    clip: {fileID: 32900000, guid: 2681d1d9f8035ec44961c91b2704acd3, type: 3}
+  - word: bedroom
+    clip: {fileID: 32900000, guid: 85f2792dc6b593e4282f4b0ff705045f, type: 3}
+  - word: bee
+    clip: {fileID: 32900000, guid: c7a5bd2898a6e004188057b62eba4ab3, type: 3}
+  - word: before
+    clip: {fileID: 32900000, guid: c74fdec818bd1434f9475c5fbb68784e, type: 3}
+  - word: beside
+    clip: {fileID: 32900000, guid: e8178cf868bc1034f928f3b9a9bda024, type: 3}
+  - word: better
+    clip: {fileID: 32900000, guid: e3e8d36fa7505d24eb49b8612d09cb09, type: 3}
+  - word: bird
+    clip: {fileID: 32900000, guid: c578e17b74020af4d8f0761d63b9b45c, type: 3}
+  - word: black
+    clip: {fileID: 32900000, guid: a8a2d32346f8b0c49bd865aaaf232e62, type: 3}
+  - word: blow
+    clip: {fileID: 32900000, guid: 24ef40db8c3edb84e994a709da6f3d1b, type: 3}
+  - word: blue
+    clip: {fileID: 32900000, guid: 20e20d7a43ed4cb4c8feee9a53c019f7, type: 3}
+  - word: boat
+    clip: {fileID: 32900000, guid: ad32968e88360984dad07a1740df9480, type: 3}
+  - word: book
+    clip: {fileID: 32900000, guid: 5ef06a2cf89f86b43ad90f053e44d599, type: 3}
+  - word: boy
+    clip: {fileID: 32900000, guid: a9c02fe8bd52fe14baed5cb5bfcd4a7a, type: 3}
+  - word: brother
+    clip: {fileID: 32900000, guid: efde778060ba68941827534203ec64ba, type: 3}
+  - word: brown
+    clip: {fileID: 32900000, guid: 5f4f9de3c63022147a6a281d17a4d533, type: 3}
+  - word: bug
+    clip: {fileID: 32900000, guid: 2316a39bad5351547b34fd06c7a65a64, type: 3}
+  - word: bye
+    clip: {fileID: 32900000, guid: 0161a022522376948ac1d397d066eb52, type: 3}
+  - word: call (on phone)
+    clip: {fileID: 32900000, guid: f4501913a5d840045a11f81067d8d798, type: 3}
+  - word: can
+    clip: {fileID: 32900000, guid: 67f59972d7006c6478a3f59416e85848, type: 3}
+  - word: car
+    clip: {fileID: 32900000, guid: 165b011ac99e4f34cb4c2dde8feff92f, type: 3}
+  - word: carrot
+    clip: {fileID: 32900000, guid: 5905f0aba095cb74ba53d78ba7adb0f5, type: 3}
+  - word: cat
+    clip: {fileID: 32900000, guid: e4a945c61e31f1c4c80ffc1812822ede, type: 3}
+  - word: cereal
+    clip: {fileID: 32900000, guid: d41d453754cc0c64e9b98e1f5bf56356, type: 3}
+  - word: chair
+    clip: {fileID: 32900000, guid: fb4282f2b3a290c48953f675caf60ede, type: 3}
+  - word: cheek
+    clip: {fileID: 32900000, guid: 28b1063350f61d54780bda2c81c0040c, type: 3}
+  - word: child
+    clip: {fileID: 32900000, guid: e4b45d0ac1b0aae408924f09a90b6a24, type: 3}
+  - word: chin
+    clip: {fileID: 32900000, guid: d06c5926becafaa4fb1607b4050abee8, type: 3}
+  - word: chocolate
+    clip: {fileID: 32900000, guid: 6412b6e32ec5f544fa47549c400f5456, type: 3}
+  - word: clean
+    clip: {fileID: 32900000, guid: abf6a7d2cd7918e4d8563e25998586d9, type: 3}
+  - word: close
+    clip: {fileID: 32900000, guid: bb920b7c3058b77438e6d66d82c490f5, type: 3}
+  - word: closet
+    clip: {fileID: 32900000, guid: 0c4cdea3d962d4d43b0e0d90d9380956, type: 3}
+  - word: cloud
+    clip: {fileID: 32900000, guid: 759b518eb9ef5c046a900b8aeeea7f7e, type: 3}
+  - word: clown
+    clip: {fileID: 32900000, guid: cdccf84b2f454874e9039a0c10e0ed90, type: 3}
+  - word: cow
+    clip: {fileID: 32900000, guid: 9cc9049b08a857544bfddef54805e6c2, type: 3}
+  - word: cowboy
+    clip: {fileID: 32900000, guid: f802fa53faa5a3d48beb5690345ec0ea, type: 3}
+  - word: cry
+    clip: {fileID: 32900000, guid: 054c10df2786bc04ba4685d7b50f2516, type: 3}
+  - word: cut
+    clip: {fileID: 32900000, guid: d60237b265b8d1f4fbf09aba95c6da39, type: 3}
+  - word: cute
+    clip: {fileID: 32900000, guid: a38ebc1319d6fdc4c865227ae18d90c1, type: 3}
+  - word: dad
+    clip: {fileID: 32900000, guid: 818ed81e62ac9c84a9bfc15edb93c4a3, type: 3}
+  - word: dance
+    clip: {fileID: 32900000, guid: a95e32dd6b1b4984a87863b259b64b5b, type: 3}
+  - word: dirty
+    clip: {fileID: 32900000, guid: ec6e9024bbdb0464d9a927c0a9714a1e, type: 3}
+  - word: dog
+    clip: {fileID: 32900000, guid: ddce2792207689d4c993f6bf69cb6541, type: 3}
+  - word: doll
+    clip: {fileID: 32900000, guid: 87beaeb24d1969146b8cf3f693c9a4dc, type: 3}
+  - word: donkey
+    clip: {fileID: 32900000, guid: fa342372384046c43b2e8f6f140e6fe2, type: 3}
+  - word: down
+    clip: {fileID: 32900000, guid: c244a5c8c38618a44b37e7a5c5198901, type: 3}
+  - word: drawer
+    clip: {fileID: 32900000, guid: ca3d988275f7b1540ab3d19919936b36, type: 3}
+  - word: drink
+    clip: {fileID: 32900000, guid: 73ff626176c9d0b43a7e6ecf18345175, type: 3}
+  - word: drop
+    clip: {fileID: 32900000, guid: d64403b3a11d13242920843c19eda5a9, type: 3}
+  - word: dry
+    clip: {fileID: 32900000, guid: b9ff6f52391c17143801654ea36103f3, type: 3}
+  - word: dryer
+    clip: {fileID: 32900000, guid: 710e339c56ccd0d468694b23245cce4d, type: 3}
+  - word: duck
+    clip: {fileID: 32900000, guid: 989c4f89215924e40af047ef95994d5a, type: 3}
+  - word: ear
+    clip: {fileID: 32900000, guid: 2afe6d3842a7de648ab16eba380fa083, type: 3}
+  - word: elephant
+    clip: {fileID: 32900000, guid: f560fcd57c93bec47912ba76d38d521b, type: 3}
+  - word: empty
+    clip: {fileID: 32900000, guid: 61e41f7edefe3ec45af25bc3eda37a82, type: 3}
+  - word: every
+    clip: {fileID: 32900000, guid: 60b7726581b504b4795e160558381b98, type: 3}
+  - word: eye
+    clip: {fileID: 32900000, guid: e9a8be6a9f2fc40448267d3d9c518a28, type: 3}
+  - word: face
+    clip: {fileID: 32900000, guid: 1f1a8538b3f413740972f9586275db72, type: 3}
+  - word: fall
+    clip: {fileID: 32900000, guid: 539ef129a0287aa488070f7f0ee661fc, type: 3}
+  - word: farm
+    clip: {fileID: 32900000, guid: 0c9b77a2e177da047a861c27c9a1f7e0, type: 3}
+  - word: fast
+    clip: {fileID: 32900000, guid: 1cd485d37f414a440993ae8e00d95ad9, type: 3}
+  - word: feet
+    clip: {fileID: 32900000, guid: 209ded68e3c69fb48abbd1e802efc521, type: 3}
+  - word: find
+    clip: {fileID: 32900000, guid: f84197e427ab4464c932937cdfd0669a, type: 3}
+  - word: fine
+    clip: {fileID: 32900000, guid: 6eae308ff0ef71248933f09c960d8962, type: 3}
+  - word: finger
+    clip: {fileID: 32900000, guid: 46112295d9e24c64d878c87131c1da33, type: 3}
+  - word: finish
+    clip: {fileID: 32900000, guid: 410201c41d597614ba83b5ee347c058f, type: 3}
+  - word: fireman
+    clip: {fileID: 32900000, guid: 677f7a86fa60aaa408cc1f44771d121f, type: 3}
+  - word: first
+    clip: {fileID: 32900000, guid: 0b3f3f926ed3dfb4d8b4aa6efe24e753, type: 3}
+  - word: fish
+    clip: {fileID: 32900000, guid: f657d186688039648b99881ba16ec9c2, type: 3}
+  - word: flag
+    clip: {fileID: 32900000, guid: 4a9be79bc4026fe4cb47f4bfd49e69d3, type: 3}
+  - word: flower
+    clip: {fileID: 32900000, guid: 24f3d190a39530d4a8f1d6bc64ac1605, type: 3}
+  - word: food
+    clip: {fileID: 32900000, guid: c49b31c44f0aed3459153193ab2c77fd, type: 3}
+  - word: for
+    clip: {fileID: 32900000, guid: 3644fc6af817f764ba89a97a8add27d2, type: 3}
+  - word: french fries
+    clip: {fileID: 32900000, guid: de07269beff7ea7438dbaec9955aa99d, type: 3}
+  - word: frog
+    clip: {fileID: 32900000, guid: fba493eefdfb47f4c9351a933775e2eb, type: 3}
+  - word: garbage
+    clip: {fileID: 32900000, guid: 6777d57414f1e634b80d696af8e8698f, type: 3}
+  - word: gift
+    clip: {fileID: 32900000, guid: 08025f9aee1b0794d956be4c81d0eade, type: 3}
+  - word: giraffe
+    clip: {fileID: 32900000, guid: df50fd54833f0a543b7e14504d09a01b, type: 3}
+  - word: girl
+    clip: {fileID: 32900000, guid: 97356d9d9ced1384e89d92a896cf3355, type: 3}
+  - word: give
+    clip: {fileID: 32900000, guid: abb65e5f765f42e46aba6b5053350f7e, type: 3}
+  - word: glass (window)
+    clip: {fileID: 32900000, guid: 169935ca44437004989c7aabe9ada43a, type: 3}
+  - word: go
+    clip: {fileID: 32900000, guid: 17d3a77028ae4234e9afdbcdaf4852b7, type: 3}
+  - word: goose
+    clip: {fileID: 32900000, guid: 70deb6018eca47b44bf611bb77971b94, type: 3}
+  - word: grandma
+    clip: {fileID: 32900000, guid: 7756ed007d8f4804abede7ffcc8aff49, type: 3}
+  - word: grandpa
+    clip: {fileID: 32900000, guid: 07cf28f9e6978eb4c8fa466e10c18d7c, type: 3}
+  - word: grass
+    clip: {fileID: 32900000, guid: f308dc7c4712b3443b1317a3eed02d47, type: 3}
+  - word: green
+    clip: {fileID: 32900000, guid: 46eb07e0d19d21c49b0203ad9bf7e139, type: 3}
+  - word: gum
+    clip: {fileID: 32900000, guid: 1ce682cb2cbfd4e46b67916fd7d1491c, type: 3}
+  - word: hair
+    clip: {fileID: 32900000, guid: 423de93cd65004c4bb0357a9851f1c3b, type: 3}
+  - word: happy
+    clip: {fileID: 32900000, guid: fcf97902206b3eb489225500548c8dca, type: 3}
+  - word: hat
+    clip: {fileID: 32900000, guid: 521bdc175a978ee45a1fafc61717c89f, type: 3}
+  - word: hate
+    clip: {fileID: 32900000, guid: 62a33dc341e4f364ea5103071d8faa8f, type: 3}
+  - word: have
+    clip: {fileID: 32900000, guid: e9258f775d332cf4caef43ea20fc8ae1, type: 3}
+  - word: have to
+    clip: {fileID: 32900000, guid: 81816185847f2c54e8e8edbfcb89917b, type: 3}
+  - word: he, she, it
+    clip: {fileID: 32900000, guid: 8d2c3174bce1e4846966b84a916c865f, type: 3}
+  - word: head
+    clip: {fileID: 32900000, guid: 626c645660c34c54da20b22177e00a1b, type: 3}
+  - word: hear
+    clip: {fileID: 32900000, guid: cbda8446461e2044abce6e4169d017f7, type: 3}
+  - word: helicopter
+    clip: {fileID: 32900000, guid: 5912fe76e11c4564bab9c0f495d27429, type: 3}
+  - word: hello
+    clip: {fileID: 32900000, guid: e6c07f27f995aaf4c963cfee7749b016, type: 3}
+  - word: hen
+    clip: {fileID: 32900000, guid: d86a03b0c01f8924291e8f713b0f4786, type: 3}
+  - word: hide
+    clip: {fileID: 32900000, guid: f36392256d3cb834daef7c54f7056485, type: 3}
+  - word: high
+    clip: {fileID: 32900000, guid: 352026b4a56ebb14b8f9eb8ede648c9b, type: 3}
+  - word: home
+    clip: {fileID: 32900000, guid: eae2e66b56a018b43b2d70f2924dda49, type: 3}
+  - word: horse
+    clip: {fileID: 32900000, guid: 03bc4528bb74de1458b8d763fcaa93aa, type: 3}
+  - word: hot
+    clip: {fileID: 32900000, guid: 763e07bd0d28ea64faaf4b5c1704936d, type: 3}
+  - word: hungry
+    clip: {fileID: 32900000, guid: 0e9bcd47b407ffb419be07a562e44a6b, type: 3}
+  - word: ice cream
+    clip: {fileID: 32900000, guid: 37c4cedfdad8f654b89455ec21c015df, type: 3}
+  - word: if
+    clip: {fileID: 32900000, guid: c59aa506d8d61694395b77a3eebcc367, type: 3}
+  - word: into
+    clip: {fileID: 32900000, guid: 697b2c39fd1b05f45a25795011e1aec6, type: 3}
+  - word: jacket
+    clip: {fileID: 32900000, guid: 5fae1e18291e2754ba9c425c9dc8c6f8, type: 3}
+  - word: jeans
+    clip: {fileID: 32900000, guid: 6137e0a37f95ddf4b94ac5be26cc05dc, type: 3}
+  - word: jump
+    clip: {fileID: 32900000, guid: 07d9b3868f8569d49998c97c9fcaeb65, type: 3}
+  - word: kiss
+    clip: {fileID: 32900000, guid: 21b76ae0111b5444bb38f1b1a581c3b5, type: 3}
+  - word: kitty
+    clip: {fileID: 32900000, guid: bb439231155182f4bb73670ef1006ccb, type: 3}
+  - word: lamp
+    clip: {fileID: 32900000, guid: a964fa974a661f247a9972025a50c432, type: 3}
+  - word: later
+    clip: {fileID: 32900000, guid: 865a869defafd29419fcf78573fc8d29, type: 3}
+  - word: like
+    clip: {fileID: 32900000, guid: f65d4628182c41c4f9772d34fbc67c1f, type: 3}
+  - word: lion
+    clip: {fileID: 32900000, guid: 823d8fd65a496d94d8fd802798e3ebb8, type: 3}
+  - word: lips
+    clip: {fileID: 32900000, guid: 6fdbf51e0add2664da95758db5d89539, type: 3}
+  - word: listen
+    clip: {fileID: 32900000, guid: 3423d293a009e3841ac54202ee7d0a2b, type: 3}
+  - word: look
+    clip: {fileID: 32900000, guid: 092062c248ef08f48be4fd6cddea64b2, type: 3}
+  - word: loud
+    clip: {fileID: 32900000, guid: 2e46dd95212f2234bab81973f98a2866, type: 3}
+  - word: mad
+    clip: {fileID: 32900000, guid: 4771dfe4291692c4298468db5703d86a, type: 3}
+  - word: make
+    clip: {fileID: 32900000, guid: 4d47c4eec6e95414dbcd6114a6c4503f, type: 3}
+  - word: man
+    clip: {fileID: 32900000, guid: 1d29d1d008c2e5948b1cad0cc2d99c6d, type: 3}
+  - word: many
+    clip: {fileID: 32900000, guid: 6998357b494524c49b6d39f39136bbc3, type: 3}
+  - word: milk
+    clip: {fileID: 32900000, guid: 7e31fe1b55cde604c8edd4537f1efb0d, type: 3}
+  - word: mine, my
+    clip: {fileID: 32900000, guid: 4442070e45279fd4f878490775689e0d, type: 3}
+  - word: mitten
+    clip: {fileID: 32900000, guid: 0d541008e622750418ba5b61f70931ee, type: 3}
+  - word: mom
+    clip: {fileID: 32900000, guid: f2c404f0f298d9342b1525f1e30b2f78, type: 3}
+  - word: moon
+    clip: {fileID: 32900000, guid: d72e9fd685def8b4ea0e22284f97c021, type: 3}
+  - word: morning
+    clip: {fileID: 32900000, guid: 1db7f7b4a9783054ab8e32f48acea50c, type: 3}
+  - word: mouse
+    clip: {fileID: 32900000, guid: 4107a66b6f10a0249ad1ad6031734a62, type: 3}
+  - word: mouth
+    clip: {fileID: 32900000, guid: a2e53d89de461134f8f311cb7d22233b, type: 3}
+  - word: nap
+    clip: {fileID: 32900000, guid: 2dd9cfe12eb75e9478abfd4c3c163762, type: 3}
+  - word: napkin
+    clip: {fileID: 32900000, guid: 9cb6da8be99dc4b40adb93a7ff942fc5, type: 3}
+  - word: night
+    clip: {fileID: 32900000, guid: 533af29786a99d14e8f85e652233e20f, type: 3}
+  - word: no
+    clip: {fileID: 32900000, guid: 1d045c3e9c545cf4881aaa31bfef1c00, type: 3}
+  - word: noisy
+    clip: {fileID: 32900000, guid: 51a6dbcd014b40e4299069bf38f00fab, type: 3}
+  - word: nose
+    clip: {fileID: 32900000, guid: e0a7a1c721ac9f3419c84ce8e4a2bdc8, type: 3}
+  - word: not
+    clip: {fileID: 32900000, guid: 257cb3fdf70619a47980516b8687136e, type: 3}
+  - word: now
+    clip: {fileID: 32900000, guid: 8184405ad15537a4c861da835cc3c60e, type: 3}
+  - word: nuts
+    clip: {fileID: 32900000, guid: 75d1883713973124b94dd43a34954881, type: 3}
+  - word: old
+    clip: {fileID: 32900000, guid: 0b769fa75a08b4f44b6a3d5a468229dd, type: 3}
+  - word: on
+    clip: {fileID: 32900000, guid: 2cce36be3146efe43a4d1b2b20a3fe40, type: 3}
+  - word: open
+    clip: {fileID: 32900000, guid: c618c4f2ffb24bf47887d0aa8b3ba41e, type: 3}
+  - word: orange
+    clip: {fileID: 32900000, guid: 8dd6239474f5a554cad582fc58238cd9, type: 3}
+  - word: outside
+    clip: {fileID: 32900000, guid: bbc6746cc7d6478429a4be5df4c95341, type: 3}
+  - word: owie
+    clip: {fileID: 32900000, guid: 4caccf111e259bd47bb104a19646ea2b, type: 3}
+  - word: owl
+    clip: {fileID: 32900000, guid: 198d348b61d43bc42a2ff45ec07bff8e, type: 3}
+  - word: pajamas
+    clip: {fileID: 32900000, guid: 5d7a54e4dfc72064da78e747b9fe22ae, type: 3}
+  - word: pen
+    clip: {fileID: 32900000, guid: 84ef8db2617462a4abcb3420076ae68e, type: 3}
+  - word: pencil
+    clip: {fileID: 32900000, guid: 39045297aace1fe4e826e7121bd76528, type: 3}
+  - word: penny
+    clip: {fileID: 32900000, guid: e7915b5a462b0c0458fbc1eca44d7c48, type: 3}
+  - word: person
+    clip: {fileID: 32900000, guid: 48c35ebe77f225943a5f7f5c7d5e98fb, type: 3}
+  - word: pig
+    clip: {fileID: 32900000, guid: 725d5902a52c3fa45a0797e16e67c938, type: 3}
+  - word: pizza
+    clip: {fileID: 32900000, guid: fdcd13dcc4c1daa41bfcfcdb163d655b, type: 3}
+  - word: please
+    clip: {fileID: 32900000, guid: bc9a071da6f713747a807b0905eb0b86, type: 3}
+  - word: police
+    clip: {fileID: 32900000, guid: efeb32f3c5252a249af541654dca0a5f, type: 3}
+  - word: pool
+    clip: {fileID: 32900000, guid: 8f5da88189ae12045a44e152f949870b, type: 3}
+  - word: potty
+    clip: {fileID: 32900000, guid: 4d97563ad677438429b3a10291ae72ec, type: 3}
+  - word: pretend
+    clip: {fileID: 32900000, guid: aa558eab72db4a646beb1cdcba3f22b9, type: 3}
+  - word: pretty
+    clip: {fileID: 32900000, guid: 73c2040a606e9ea48aba611a92a829f6, type: 3}
+  - word: puppy
+    clip: {fileID: 32900000, guid: 1b41c5d53687e084a9a0d73ab692e7ef, type: 3}
+  - word: puzzle
+    clip: {fileID: 32900000, guid: 1dfd0f5fd64ed1a498ee2bf16646747d, type: 3}
+  - word: quiet
+    clip: {fileID: 32900000, guid: 749d4eda2913c16429ac13b241dec0be, type: 3}
+  - word: radio
+    clip: {fileID: 32900000, guid: 4bb95302a53a89c45b3c8fc1b8d617f9, type: 3}
+  - word: rain
+    clip: {fileID: 32900000, guid: 99d860f9099c44e409a360665fc97d34, type: 3}
+  - word: read
+    clip: {fileID: 32900000, guid: daebef1ff87cdfc41873a84b9724004b, type: 3}
+  - word: red
+    clip: {fileID: 32900000, guid: 340d92d69c497844dbe91cb97884c4a0, type: 3}
+  - word: refrigerator
+    clip: {fileID: 32900000, guid: d29dd3a94c18a0b4ca29d2d5324ba52c, type: 3}
+  - word: ride
+    clip: {fileID: 32900000, guid: 516dcd45e883e21499c15e00a38fe22b, type: 3}
+  - word: room
+    clip: {fileID: 32900000, guid: 5604dd1bd49817f418b24f93d344f90f, type: 3}
+  - word: sad
+    clip: {fileID: 32900000, guid: 610884fdb3323c24a9f60b38df3fbaae, type: 3}
+  - word: same
+    clip: {fileID: 32900000, guid: 23336ef8995f600499463b5ed3b4733f, type: 3}
+  - word: say
+    clip: {fileID: 32900000, guid: 3d0ed7f4a11040347a2d37f55e0be244, type: 3}
+  - word: scissors
+    clip: {fileID: 32900000, guid: b09a12465c233db4e86d37792db93782, type: 3}
+  - word: see
+    clip: {fileID: 32900000, guid: f49dbb1cdbca9f545824b9bf5ffe4eb3, type: 3}
+  - word: shhh
+    clip: {fileID: 32900000, guid: 10d21ac41b984d144b2e10e4b0e4f8d7, type: 3}
+  - word: shirt
+    clip: {fileID: 32900000, guid: 4faae1ec9fb7aa64bbff84f7e1037510, type: 3}
+  - word: shoe
+    clip: {fileID: 32900000, guid: 337d9189dd6ed8c4f856a50d2365b5e3, type: 3}
+  - word: shower
+    clip: {fileID: 32900000, guid: 9bfc7ff20bd6fb744a16b26e07be34aa, type: 3}
+  - word: sick
+    clip: {fileID: 32900000, guid: 49c99c2a2f0f3f44abb1bd91ee76d1d6, type: 3}
+  - word: sleep
+    clip: {fileID: 32900000, guid: 7810a09afcf22c148b6ddef845768b6c, type: 3}
+  - word: sleepy
+    clip: {fileID: 32900000, guid: c8878e290732f8945ab8b495d7c86ee2, type: 3}
+  - word: smile
+    clip: {fileID: 32900000, guid: 2d9280dbaa7dccb4788a46cecdd4db2c, type: 3}
+  - word: snack
+    clip: {fileID: 32900000, guid: 9988d10499fb8c744b25d4a13f746e0e, type: 3}
+  - word: snow
+    clip: {fileID: 32900000, guid: 8cf93ac5240280141bb1f3e8babdb60a, type: 3}
+  - word: stairs
+    clip: {fileID: 32900000, guid: d3efe1b632c1b994eae13be5fa32ca80, type: 3}
+  - word: stay
+    clip: {fileID: 32900000, guid: ed0d9bbb0e5b1fc4da627b7991513a40, type: 3}
+  - word: sticky
+    clip: {fileID: 32900000, guid: 5e77fda832615e541b244b9dc3aabd51, type: 3}
+  - word: store
+    clip: {fileID: 32900000, guid: 72488f47786514948b5cf18af3d8a002, type: 3}
+  - word: story
+    clip: {fileID: 32900000, guid: 06ea0587f2ebd1c4f8fc8bb45e44d390, type: 3}
+  - word: stuck
+    clip: {fileID: 32900000, guid: f76f2ba660a19384c8f00f1c47fb3938, type: 3}
+  - word: sun
+    clip: {fileID: 32900000, guid: 4a7f91e96dd7a854cb91e81779bda5a3, type: 3}
+  - word: table
+    clip: {fileID: 32900000, guid: dcae692ab7317da47b38239f430f5d1d, type: 3}
+  - word: talk
+    clip: {fileID: 32900000, guid: bcadffc6480b5df4d84690f75647e1e3, type: 3}
+  - word: taste
+    clip: {fileID: 32900000, guid: a502dfe8314cfa34d8640ed13169df5d, type: 3}
+  - word: thank you
+    clip: {fileID: 32900000, guid: b2dfb2f881a53c1498d1ecf95b401d8e, type: 3}
+  - word: that
+    clip: {fileID: 32900000, guid: 40b9783c8b3450140940e579b4ec4211, type: 3}
+  - word: there
+    clip: {fileID: 32900000, guid: 8612e180844e2a8489fc96e2ab3a64a2, type: 3}
+  - word: think
+    clip: {fileID: 32900000, guid: 626432db484ad4b428238748b3c25efa, type: 3}
+  - word: thirsty
+    clip: {fileID: 32900000, guid: 80a4eb5664bc7e045bee892ebf756218, type: 3}
+  - word: tiger
+    clip: {fileID: 32900000, guid: 4d640a84124aae742bcb237fbd135bd7, type: 3}
+  - word: time
+    clip: {fileID: 32900000, guid: ebc3bd11b7d98c94f9db2a09ac1efb37, type: 3}
+  - word: tomorrow
+    clip: {fileID: 32900000, guid: 918c479edde9370439ee2b3a12d0d0a6, type: 3}
+  - word: tongue
+    clip: {fileID: 32900000, guid: 9d8a2b01d7238d84aa9e729e1d332bfb, type: 3}
+  - word: tooth
+    clip: {fileID: 32900000, guid: 1f71f0bd7870fff4f9143e764c7318ca, type: 3}
+  - word: toothbrush
+    clip: {fileID: 32900000, guid: d86819162d089034da67a3ba3b9acd01, type: 3}
+  - word: touch
+    clip: {fileID: 32900000, guid: 345fcb11407bca040a5eccefda1930f6, type: 3}
+  - word: toy
+    clip: {fileID: 32900000, guid: c4f7a093b4ea32740944b3ae54e0ad46, type: 3}
+  - word: tree
+    clip: {fileID: 32900000, guid: d34e801f87763174c856a4db51452a70, type: 3}
+  - word: TV
+    clip: {fileID: 32900000, guid: ad06379560513cb46a1f33032d123629, type: 3}
+  - word: uncle
+    clip: {fileID: 32900000, guid: 7dce529ede50c88478ef3abbb82ecd5c, type: 3}
+  - word: underwear
+    clip: {fileID: 32900000, guid: 67813487eb902ec449727d653e170444, type: 3}
+  - word: up
+    clip: {fileID: 32900000, guid: 6f20dcb61483afb479f8efd7710b55e5, type: 3}
+  - word: vacuum
+    clip: {fileID: 32900000, guid: 987dd3a4f085f774d99296ca85a87929, type: 3}
+  - word: wait
+    clip: {fileID: 32900000, guid: 7dfb5c6a2ce970340b6bc24cd3598a3f, type: 3}
+  - word: wake
+    clip: {fileID: 32900000, guid: e759c0bb0f0667741a75dc27cdb387b6, type: 3}
+  - word: water
+    clip: {fileID: 32900000, guid: 64f919a3fd76a8c409deb04d3b8a13c2, type: 3}
+  - word: we, us
+    clip: {fileID: 32900000, guid: fe9c7237f1548944599d1bb68cd530a5, type: 3}
+  - word: wet
+    clip: {fileID: 32900000, guid: 4738da4128ab837499144db67313558a, type: 3}
+  - word: where
+    clip: {fileID: 32900000, guid: 32673a4c595ce4241868e8e5b797b52c, type: 3}
+  - word: white
+    clip: {fileID: 32900000, guid: 7176acd55c991184783a09eb89b900a8, type: 3}
+  - word: who
+    clip: {fileID: 32900000, guid: df39d0604c748e447b488f50a59e6096, type: 3}
+  - word: why
+    clip: {fileID: 32900000, guid: 88375a902c0495349aac6bb5d56f8fc9, type: 3}
+  - word: will
+    clip: {fileID: 32900000, guid: 5203e3f943a913443ad28a51d7d22520, type: 3}
+  - word: wolf
+    clip: {fileID: 32900000, guid: a1571f0f073aaf24aa58d371c695028f, type: 3}
+  - word: yellow
+    clip: {fileID: 32900000, guid: 08a05ab1d08787748ae4b70121f03afb, type: 3}
+  - word: yes
+    clip: {fileID: 32900000, guid: db6e9e281af2f654e86ab8c6a3ab6c17, type: 3}
+  - word: yesterday
+    clip: {fileID: 32900000, guid: e7fcd1d1ff5987e4abfbe285859e5c7a, type: 3}
+  - word: yourself
+    clip: {fileID: 32900000, guid: dcf68e9507cbfea4a810c9c287acc512, type: 3}
+  - word: yucky
+    clip: {fileID: 32900000, guid: a7d429b40b377b24383c26d8448727d1, type: 3}
+  - word: zebra
+    clip: {fileID: 32900000, guid: d04dd96ea76eb32458b41d3e31ab94c8, type: 3}
+  - word: zipper
+    clip: {fileID: 32900000, guid: 30b600212119503498d6ff53308d6065, type: 3}
