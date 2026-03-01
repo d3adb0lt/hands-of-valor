@@ -121,6 +121,12 @@ public class LevelManager : MonoBehaviour
         var attacks = FindFirstObjectByType<BossAttackManager>();
         if (attacks != null) attacks.StopAttacks();
 
+        var cams = FindObjectsOfType<WebCamTexture>();
+        for (int i = 0; i < cams.Length; i++)
+        {
+            if (cams[i] != null && cams[i].isPlaying) cams[i].Stop();
+        }
+
         SceneManager.LoadScene(startScreenSceneName);
     }
 }
