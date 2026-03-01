@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Engine;
 
 public class LevelManager : MonoBehaviour
 {
@@ -122,11 +123,8 @@ public class LevelManager : MonoBehaviour
         var attacks = FindFirstObjectByType<BossAttackManager>();
         if (attacks != null) attacks.StopAttacks();
 
-        var cams = FindObjectsOfType<WebCamTexture>();
-        for (int i = 0; i < cams.Length; i++)
-        {
-            if (cams[i] != null && cams[i].isPlaying) cams[i].Stop();
-        }
+        var engine = FindFirstObjectByType<SimpleExecutionEngine>();
+        if (engine != null) engine.Pause();
 
         if (wonBattle) {
             SceneManager.LoadScene(victorySceneName);

@@ -18,8 +18,10 @@
 
 # Visual Studio
 .vs/
+.vscode/
 *.csproj
 *.sln
+*.slnx
 *.suo
 *.user
 *.userprefs
