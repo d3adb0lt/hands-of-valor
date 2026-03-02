@@ -11,10 +11,6 @@ public class StartScreenController : MonoBehaviour
 
     private void Awake()
     {
-        if (listPopulator == null)
-        {
-            listPopulator = FindFirstObjectByType<StartScreenListPopulator>();
-        }
         DontDestroyOnLoad(gameObject);
     }
 
@@ -38,14 +34,15 @@ public class StartScreenController : MonoBehaviour
 
         if (listPopulator == null)
         {
-            Debug.LogError("StartScreenListPopulator not found. Assign it on StartScreenController.");
+            Debug.LogError("StartScreenListPopulator is not assigned on StartScreenController.");
             return;
         }
 
         List<string> selected = listPopulator.GetSelectedWords();
+
         if (selected == null || selected.Count == 0)
         {
-            Debug.LogWarning("No words selected. Fight will start with an empty list.");
+            return;
         }
 
         LevelManager.Instance.SetSelectedWords(selected);
@@ -68,6 +65,7 @@ public class StartScreenController : MonoBehaviour
         }
 
         LevelManager.Instance.StartBossFight();
+
         Destroy(gameObject);
     }
 }
