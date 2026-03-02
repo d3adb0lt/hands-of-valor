@@ -10,10 +10,11 @@ HOW TO CONTRIBUTE
 4. Pull the latest changes from main: git pull
 5. Create a new branch off of main in this format: git checkout -b <your_github_username>-<issue_number> (Ensure that this branch is linked to the task in the Hands of Valor Kanban)
 6. Make your changes and test.
-7. Create a commit with all of your changes: git commit -a -m "short description of your changes"
-8. Push your changes: git push (Ensure any merge conflicts are resolved)
-9. From GitHub, open a PR. Write a more exhaustive description of your changes and what you have tested. Include a screen recording of your changes in action! Also, drag your Kanban task into In Review. (Ensure any merge conflicts are resolved)
-10. Submit a link to your PR in the Hands of Valor channel and tag the leads. Merge your PR once you have their approval. After merging, move your Kanban task into Done.
+7. Add all of your changes: git add .
+8. Create a commit: git commit -m "short description of your changes"
+9. Push your changes: git push (The first time pushing will be git push --set-upstream origin <your_branch>. Ensure any merge conflicts are resolved)
+10. From GitHub, open a PR. Write a more exhaustive description of your changes and what you have tested. Include a screen recording of your changes in action! Also, drag your Kanban task into In Review. (Ensure any merge conflicts are resolved)
+11. Submit a link to your PR in the Hands of Valor channel and tag the leads. Merge your PR once you have their approval. After merging, move your Kanban task into Done.
 
 SETUP AND RUN INSTRUCTIONS
 
@@ -46,50 +47,55 @@ REPOSITORY MAP
 
 Scenes
 Assets/Scenes/StartScreenScene.unity
-Simple start screen UI with one button.
+Start screen UI. Includes the sign selection list, filter input, preview overlay, and the Start button.
 
 Assets/Scenes/BossTemplateScene.unity
-Boss fight template scene. Contains the word slots UI, dodge slot UI, and managers.
+Boss fight template scene. Contains the boss, word slots UI, dodge slot UI, and managers. SimpleSLREngine is present here.
+
+Data and content
+Assets/SLR-GTk/Package/Reference Videos/
+MP4 reference videos. These are imported as Unity VideoClip assets and are used by the start screen preview.
+
+Assets/Data/SignLibrary.asset
+ScriptableObject that contains the sign entries used by the start screen list. Each entry includes a word name and a VideoClip reference.
+
+Assets/Scripts/SignLibrary.cs and Assets/Scripts/SignEntry.cs
+Defines the data model for sign entries that the start screen uses.
+
+Start screen scripts
+Assets/Scripts/StartScreenController.cs
+Handles the Start button. Reads the currently selected signs from StartScreenListPopulator, passes them into LevelManager, then loads the boss scene. Start does nothing if no words are selected.
+
+Assets/Scripts/StartScreenListPopulator.cs
+Builds the scroll list from SignLibrary. Supports filtering via the text input, selection via checkboxes, reset selection, and video preview when clicking the word button. Also rehydrates selection from LevelManager when returning from the boss scene so previously selected words remain selected.
+
+Assets/Scripts/SignRowToggle.cs
+Row prefab controller for each sign in the list. Connects the Toggle and the word button click to the list populator. This script is attached to the SignRowToggle prefab.
 
 Core gameplay scripts
 Assets/Scripts/LevelManager.cs
-Singleton that persists across scenes.
-Receives the player selected word list.
-Builds and refills the shuffled fight queue using bags so all words appear before repeats.
-Starts and stops the fight. Stop loads StartScreenScene.
+Singleton that persists across scenes. Receives the player selected word list from the start screen. Builds and refills the shuffled fight queue using bags so all words appear before repeats. Starts and stops the fight. Stop loads StartScreenScene.
 
 Assets/Scripts/WordSpawnManager.cs
-Controls the main word slots.
-Spawns rounds, handles expiration timers, and clears words when recognized.
-Implements critical word chance and shorter lifetime.
-Applies boss damage when a normal slot is signed successfully.
-Enforces dodge priority so the dodge word clears first if duplicated.
+Controls the main word slots. Spawns rounds, handles expiration timers, and clears words when recognized. Implements critical word chance and shorter lifetime. Applies boss damage when a normal slot is signed successfully. Enforces dodge priority so the dodge word clears first if duplicated.
 
 Assets/Scripts/BossAttackManager.cs
-Controls the dodge slot.
-Spawns dodge words at random intervals, with an initial delay.
-Clears dodge words when recognized.
+Controls the dodge slot. Spawns dodge words at random intervals with an initial delay. Clears dodge words when recognized.
 
 Assets/Scripts/WordSlot.cs
-UI slot for normal words.
-Tracks current word and critical state.
-Sets text and changes color to red for critical.
+UI slot for normal words. Tracks current word and critical state. Sets text and changes color to red for critical words.
 
 Assets/Scripts/DodgeSlot.cs
-UI slot for dodge words.
-Tracks current word and shows or clears it.
+UI slot for dodge words. Tracks current word and shows or clears it.
 
 Assets/Scripts/BossHealth.cs
-Tracks boss HP.
-On reaching 0, the fight stops and transitions back to start screen.
-
-Start screen script
-Assets/Scripts/StartScreenController.cs
-Handles the Start button.
-Sets the hardcoded word list into LevelManager for now.
-Loads the boss scene and starts the fight after the boss scene loads.
+Tracks boss HP. On reaching 0, stops the fight and transitions back to the start screen.
 
 If you are looking for X, go here
+Start screen selection list and filtering: Assets/Scripts/StartScreenListPopulator.cs
+Individual list row behavior: Assets/Scripts/SignRowToggle.cs
+Sign data source and entry definitions: Assets/Data/SignLibrary.asset and Assets/Scripts/SignLibrary.cs and Assets/Scripts/SignEntry.cs
+Video preview playback: Assets/Scripts/StartScreenListPopulator.cs and the VideoPlayer in StartScreenScene
 Word spawning and timers: Assets/Scripts/WordSpawnManager.cs
 Dodge spawning and timing ranges: Assets/Scripts/BossAttackManager.cs
 Boss HP and win condition: Assets/Scripts/BossHealth.cs
