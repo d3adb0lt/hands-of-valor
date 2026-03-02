@@ -3,6 +3,7 @@ using UnityEngine;
 public class BossHealth : MonoBehaviour
 {
     [SerializeField] private int maxHp = 10;
+    
     public int CurrentHp { get; private set; }
 
     private void Awake()
@@ -23,7 +24,8 @@ public class BossHealth : MonoBehaviour
 
         if (CurrentHp == 0)
         {
-            Debug.Log("Boss defeated");
+            LevelManager.Instance.StopBossFight(wonBattle: true);
+            Debug.Log("Boss defeated.");
         }
     }
 }
