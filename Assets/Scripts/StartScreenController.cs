@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 public class StartScreenController : MonoBehaviour
 {
     [SerializeField] private string bossFightSceneName = "BossTemplateScene";
-
-    [SerializeField]
-    private List<string> hardcodedWords = new List<string>();
+    [SerializeField] private StartScreenListPopulator listPopulator;
 
     private bool waitingForBossScene;
 
@@ -28,14 +26,26 @@ public class StartScreenController : MonoBehaviour
 
     public void OnStartFightPressed()
     {
-        if (LevelManager.Instance != null)
-        {
-            LevelManager.Instance.SetSelectedWords(new List<string>(hardcodedWords));
-        }
-        else
+        if (LevelManager.Instance == null)
         {
             Debug.LogError("LevelManager.Instance is null. Make sure LevelManager exists in StartScreen.");
+            return;
         }
+
+        if (listPopulator == null)
+        {
+            Debug.LogError("StartScreenListPopulator is not assigned on StartScreenController.");
+            return;
+        }
+
+        List<string> selected = listPopulator.GetSelectedWords();
+
+        if (selected == null || selected.Count == 0)
+        {
+            return;
+        }
+
+        LevelManager.Instance.SetSelectedWords(selected);
 
         waitingForBossScene = true;
         SceneManager.LoadScene(bossFightSceneName);
