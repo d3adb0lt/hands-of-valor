@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
 
     [Header("Scene Names")]
     [SerializeField] private string startScreenSceneName = "StartScreenScene";
+    [SerializeField] private string victorySceneName = "VictoryScene";
 
     [Header("Selected words are provided by the start screen")]
     [SerializeField] private List<string> selectedWords = new List<string>();
@@ -113,7 +114,7 @@ public class LevelManager : MonoBehaviour
         if (attacks != null) attacks.StartAttacks();
     }
 
-    public void StopBossFight()
+    public void StopBossFight(bool wonBattle)
     {
         var spawner = FindFirstObjectByType<WordSpawnManager>();
         if (spawner != null) spawner.StopBossFight();
@@ -127,6 +128,11 @@ public class LevelManager : MonoBehaviour
             if (cams[i] != null && cams[i].isPlaying) cams[i].Stop();
         }
 
-        SceneManager.LoadScene(startScreenSceneName);
+        if (wonBattle) {
+            SceneManager.LoadScene(victorySceneName);
+        } else {
+            SceneManager.LoadScene(startScreenSceneName);
+        }
+        
     }
 }

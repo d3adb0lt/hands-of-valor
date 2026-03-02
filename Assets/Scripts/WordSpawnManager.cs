@@ -195,7 +195,7 @@ public class WordSpawnManager : MonoBehaviour
 
                     if (bossHealth.CurrentHp == 0 && LevelManager.Instance != null)
                     {
-                        LevelManager.Instance.StopBossFight();
+                        LevelManager.Instance.StopBossFight(wonBattle: true);
                     }
                 }
 
