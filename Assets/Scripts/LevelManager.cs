@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [Header("Scene Names")]
     [SerializeField] private string startScreenSceneName = "StartScreenScene";
     [SerializeField] private string victorySceneName = "VictoryScene";
+    [SerializeField] private string defeatSceneName = "DefeatScene";
 
     [Header("Selected words are provided by the start screen")]
     [SerializeField] private List<string> selectedWords = new List<string>();
@@ -126,10 +127,13 @@ public class LevelManager : MonoBehaviour
         var engine = FindFirstObjectByType<SimpleExecutionEngine>();
         if (engine != null) engine.Pause();
 
+        var webcamTextire = FindFirstObjectByType<WebCamTexture>();
+        if (webcamTextire != null) webcamTextire.Stop();
+
         if (wonBattle) {
             SceneManager.LoadScene(victorySceneName);
         } else {
-            SceneManager.LoadScene(startScreenSceneName);
+            SceneManager.LoadScene(defeatSceneName);
         }
         
     }
