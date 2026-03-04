@@ -7,6 +7,9 @@ public class BossAttackManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private DodgeSlot dodgeSlot;
 
+    [Header("Player")]
+    [SerializeField] private Player player;
+
     [Header("Timing")]
     [SerializeField] private float dodgeLifetimeSeconds = 1.5f;
 
@@ -22,9 +25,13 @@ public class BossAttackManager : MonoBehaviour
     private readonly Queue<string> recognizedInbox = new Queue<string>();
     private readonly object inboxLock = new object();
 
+    private bool dodgeResolved;
+    private bool dodgeSucceeded;
+
     private void Awake()
     {
         if (dodgeSlot == null) dodgeSlot = FindFirstObjectByType<DodgeSlot>();
+        if (player == null) player = FindFirstObjectByType<Player>();
     }
 
     private void Update()
@@ -62,6 +69,8 @@ public class BossAttackManager : MonoBehaviour
 
         if (dodgeSlot.CurrentWord.ToLowerInvariant() == sign.ToLowerInvariant())
         {
+            dodgeResolved = true;
+            dodgeSucceeded = true;
             dodgeSlot.Clear();
             return true;
         }
@@ -80,6 +89,9 @@ public class BossAttackManager : MonoBehaviour
         if (loop != null) StopCoroutine(loop);
         loop = null;
 
+        dodgeResolved = false;
+        dodgeSucceeded = false;
+
         if (dodgeSlot != null) dodgeSlot.Clear();
     }
 
@@ -92,14 +104,29 @@ public class BossAttackManager : MonoBehaviour
         {
             SpawnDodgeWord();
 
+            dodgeResolved = false;
+            dodgeSucceeded = false;
+
             float t = 0f;
-            while (t < dodgeLifetimeSeconds && dodgeSlot != null && dodgeSlot.IsFilled)
+            while (t < dodgeLifetimeSeconds && dodgeSlot != null && dodgeSlot.IsFilled && !dodgeResolved)
             {
                 t += Time.deltaTime;
                 yield return null;
             }
 
+            bool dodgedInTime = dodgeSucceeded;
+
             if (dodgeSlot != null) dodgeSlot.Clear();
+
+            if (player != null)
+            {
+                player.ResolveBossAttack(dodgedInTime);
+
+                if (player.Hp <= 0)
+                {
+                    yield break;
+                }
+            }
 
             float wait = Random.Range(timeBetweenDodgesMin, timeBetweenDodgesMax);
             yield return new WaitForSeconds(wait);

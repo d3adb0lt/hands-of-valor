@@ -29,6 +29,9 @@ public class PauseManager : MonoBehaviour
 
         if (engine != null) engine.Pause();
 
+        var webcamTextire = FindFirstObjectByType<WebCamTexture>();
+        if (webcamTextire != null) webcamTextire.Stop();
+
         if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
     }
 
