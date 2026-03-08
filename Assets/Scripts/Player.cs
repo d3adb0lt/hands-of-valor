@@ -59,4 +59,18 @@ public class Player : MonoBehaviour
             if (LevelManager.Instance != null) LevelManager.Instance.StopBossFight(false);
         }
     }
+
+    public void ResolveParry()
+    {
+        if (Hp <= 0) return;
+
+        if (Stamina <= 0)
+        {
+            TakeDamage(1);
+        }
+        else
+        {
+            UseStamina(1);
+        }
+    }
 }

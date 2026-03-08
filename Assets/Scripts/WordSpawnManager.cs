@@ -18,8 +18,14 @@ public class WordSpawnManager : MonoBehaviour
     [SerializeField] private float criticalChance = 0.2f;
     [SerializeField] private float criticalLifetimeMultiplier = 0.5f;
 
+    [Header("Parry Words")]
+    [SerializeField] private float parryChance = 0.2f;
+
     [Header("Boss")]
     [SerializeField] private BossHealth bossHealth;
+
+    [Header("Player")]
+    [SerializeField] private Player player;
 
     private readonly Dictionary<WordSlot, Coroutine> expiry = new Dictionary<WordSlot, Coroutine>();
 
@@ -64,6 +70,8 @@ public class WordSpawnManager : MonoBehaviour
         }
 
         if (bossHealth == null) bossHealth = FindFirstObjectByType<BossHealth>();
+
+        if (player == null) player = FindFirstObjectByType<Player>();
 
         if (fightLoop != null) StopCoroutine(fightLoop);
         fightLoop = StartCoroutine(FightLoop());
@@ -117,7 +125,16 @@ public class WordSpawnManager : MonoBehaviour
         int countToSpawn = Mathf.Min(wordsPerRound, emptySlots.Count);
         if (countToSpawn <= 0) return;
 
-        bool spawnCritical = Random.value < criticalChance;
+        bool spawnCriticalThisRound = Random.value < criticalChance;
+        bool spawnParryThisRound = Random.value < parryChance;
+
+        int criticalIndex = spawnCriticalThisRound ? Random.Range(0, countToSpawn) : -1;
+        int parryIndex = spawnParryThisRound ? Random.Range(0, countToSpawn) : -1;
+
+        if (criticalIndex != -1 && parryIndex == criticalIndex)
+        {
+            parryIndex = (parryIndex + 1) % countToSpawn;
+        }
 
         for (int i = 0; i < countToSpawn; i++)
         {
@@ -127,16 +144,30 @@ public class WordSpawnManager : MonoBehaviour
             WordSlot slot = emptySlots[randomSlotIndex];
             emptySlots.RemoveAt(randomSlotIndex);
 
-            bool isCriticalThisOne = spawnCritical && i == 0;
-            float lifetime = isCriticalThisOne ? lifetimeSeconds * criticalLifetimeMultiplier : lifetimeSeconds;
+            bool isCritical = i == criticalIndex;
+            bool isParry = i == parryIndex;
 
-            SpawnInSlot(slot, word, lifetime, isCriticalThisOne);
+            WordSlot.WordKind kind = WordSlot.WordKind.Normal;
+            float life = lifetimeSeconds;
+
+            if (isCritical)
+            {
+                kind = WordSlot.WordKind.Critical;
+                life = lifetimeSeconds * criticalLifetimeMultiplier;
+            }
+            else if (isParry)
+            {
+                kind = WordSlot.WordKind.Parry;
+                life = lifetimeSeconds;
+            }
+
+            SpawnInSlot(slot, word, life, kind);
         }
     }
 
-    private void SpawnInSlot(WordSlot slot, string word, float lifetime, bool isCritical)
+    private void SpawnInSlot(WordSlot slot, string word, float lifetime, WordSlot.WordKind kind)
     {
-        slot.SetWord(word, isCritical);
+        slot.SetWord(word, kind);
 
         if (expiry.TryGetValue(slot, out Coroutine existing) && existing != null)
         {
@@ -169,37 +200,63 @@ public class WordSpawnManager : MonoBehaviour
 
         string s = sign.ToLowerInvariant();
 
+        WordSlot matchCritical = null;
+        WordSlot matchNormal = null;
+        WordSlot matchParry = null;
+
         for (int i = 0; i < slots.Count; i++)
         {
             WordSlot slot = slots[i];
             if (!slot.IsFilled) continue;
 
-            if (slot.CurrentWord.ToLowerInvariant() == s)
+            if (slot.CurrentWord.ToLowerInvariant() != s) continue;
+
+            if (slot.Kind == WordSlot.WordKind.Critical)
             {
-                bool wasCritical = slot.IsCritical;
-
-                slot.Clear();
-
-                if (expiry.TryGetValue(slot, out Coroutine routine) && routine != null)
-                {
-                    StopCoroutine(routine);
-                    expiry.Remove(slot);
-                }
-
-                if (bossHealth != null)
-                {
-                    int damage = wasCritical ? 2 : 1;
-                    bossHealth.TakeDamage(damage);
-
-                    if (wasCritical) Debug.Log("Critical hit");
-
-                    if (bossHealth.CurrentHp == 0 && LevelManager.Instance != null)
-                    {
-                        LevelManager.Instance.StopBossFight(wonBattle: true);
-                    }
-                }
-
+                matchCritical = slot;
                 break;
+            }
+
+            if (slot.Kind == WordSlot.WordKind.Normal)
+            {
+                if (matchNormal == null) matchNormal = slot;
+            }
+            else if (slot.Kind == WordSlot.WordKind.Parry)
+            {
+                if (matchParry == null) matchParry = slot;
+            }
+        }
+
+        WordSlot chosen = matchCritical != null ? matchCritical : (matchNormal != null ? matchNormal : matchParry);
+        if (chosen == null) return;
+
+        bool wasCritical = chosen.Kind == WordSlot.WordKind.Critical;
+        bool wasParry = chosen.Kind == WordSlot.WordKind.Parry;
+
+        chosen.Clear();
+
+        if (expiry.TryGetValue(chosen, out Coroutine routine) && routine != null)
+        {
+            StopCoroutine(routine);
+            expiry.Remove(chosen);
+        }
+
+        if (wasParry)
+        {
+            if (player != null) player.ResolveParry();
+            return;
+        }
+
+        if (bossHealth != null)
+        {
+            int damage = wasCritical ? 2 : 1;
+            bossHealth.TakeDamage(damage);
+
+            if (wasCritical) Debug.Log("Critical hit");
+
+            if (bossHealth.CurrentHp == 0 && LevelManager.Instance != null)
+            {
+                LevelManager.Instance.StopBossFight(wonBattle: true);
             }
         }
     }
