@@ -3,12 +3,22 @@ using UnityEngine;
 
 public class WordSlot : MonoBehaviour
 {
+    public enum WordKind
+    {
+        Normal,
+        Critical,
+        Parry
+    }
+
     [SerializeField] private TMP_Text label;
 
     public string CurrentWord { get; private set; } = "";
     public bool IsFilled => !string.IsNullOrEmpty(CurrentWord);
 
-    public bool IsCritical { get; private set; }
+    public WordKind Kind { get; private set; } = WordKind.Normal;
+
+    public bool IsCritical => Kind == WordKind.Critical;
+    public bool IsParry => Kind == WordKind.Parry;
 
     private Color normalColor;
     private bool hasNormalColor;
@@ -33,13 +43,18 @@ public class WordSlot : MonoBehaviour
 
     public void SetWord(string word)
     {
-        SetWord(word, false);
+        SetWord(word, WordKind.Normal);
     }
 
     public void SetWord(string word, bool isCritical)
     {
+        SetWord(word, isCritical ? WordKind.Critical : WordKind.Normal);
+    }
+
+    public void SetWord(string word, WordKind kind)
+    {
         CurrentWord = word ?? "";
-        IsCritical = isCritical;
+        Kind = kind;
 
         if (label != null)
         {
@@ -47,7 +62,9 @@ public class WordSlot : MonoBehaviour
 
             if (hasNormalColor)
             {
-                label.color = IsCritical ? Color.red : normalColor;
+                if (Kind == WordKind.Critical) label.color = Color.red;
+                else if (Kind == WordKind.Parry) label.color = Color.yellow;
+                else label.color = normalColor;
             }
 
             label.gameObject.SetActive(true);
@@ -57,7 +74,7 @@ public class WordSlot : MonoBehaviour
     public void Clear()
     {
         CurrentWord = "";
-        IsCritical = false;
+        Kind = WordKind.Normal;
 
         if (label != null)
         {

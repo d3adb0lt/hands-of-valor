@@ -490,6 +490,7 @@ MonoBehaviour:
   timeBetweenRounds: 0.25
   criticalChance: 0.2
   criticalLifetimeMultiplier: 0.5
+  parryChance: 0.2
   bossHealth: {fileID: 0}
 --- !u!4 &378209838
 Transform:
