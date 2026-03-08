@@ -1,7 +1,7 @@
 GETTING STARTED
 
 PROJECT OVERVIEW
-This is a Unity game prototype where the player fights a boss by performing sign language gestures recognized by a sign language recognizer gesture toolkit. During the fight, several word slots appear on screen and the player must sign the displayed words before they expire. A separate dodge word appears in the top right on its own timer and must be prioritized. Sometimes a critical word spawns that expires faster, shows as red text, and deals extra damage. Boss health decreases when the player correctly signs a normal slot word, and the fight ends when boss HP reaches zero. Player HP decreases if the player fails to sign the dodge word before it expires. If player HP reaches 0, the fight ends in defeat. If the player manages to sign the dodge word before it expires, their stamina will decrease. Once stamina reaches 0, they will no longer be able to dodge and subsequent boss attacks will deal damage regardless of whether or not the player signs the dodge word in time.
+This is a Unity game prototype where the player fights a boss by performing sign language gestures recognized by a sign language recognizer gesture toolkit. During the fight, several word slots appear on screen and the player must sign the displayed words before they expire. A separate dodge word appears in the top right on its own timer and must be prioritized. Sometimes a critical word spawns that expires faster, shows as red text, and deals extra damage. Boss health decreases when the player correctly signs a normal slot word, and the fight ends when boss HP reaches zero. Player HP decreases if the player fails to sign the dodge word before it expires. If player HP reaches 0, the fight ends in defeat. If the player manages to sign the dodge word before it expires, their stamina will decrease. Once stamina reaches 0, they will no longer be able to dodge and subsequent boss attacks will deal damage regardless of whether or not the player signs the dodge word in time. A word that the boss can "parry" also has a chance to appear. If the player signs that word, they will lose stamina if they have it or they will lose HP.
 
 HOW TO CONTRIBUTE
 
@@ -29,6 +29,7 @@ Prerequisites
 Open the project
 1. In Unity Hub, click Add and select the repository folder.
 2. Open the project using the Unity version from ProjectSettings/ProjectVersion.txt.
+3. Set your aspect ratio to 9:16.
 
 Run the game in Editor
 1. Open the scene named StartScreenScene.
