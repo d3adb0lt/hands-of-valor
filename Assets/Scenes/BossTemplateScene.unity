@@ -586,6 +586,7 @@ MonoBehaviour:
   criticalLifetimeMultiplier: 0.5
   parryChance: 0.2
   bossHealth: {fileID: 0}
+  player: {fileID: 0}
 --- !u!4 &378209838
 Transform:
   m_ObjectHideFlags: 0
@@ -1746,7 +1747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8968258265492319015, guid: 497d5c774c3ce4f1ca5df896393cac60, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 130
+      value: 234.6846
       objectReference: {fileID: 0}
     - target: {fileID: 8968258265492319015, guid: 497d5c774c3ce4f1ca5df896393cac60, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1766,7 +1767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8968258265492319015, guid: 497d5c774c3ce4f1ca5df896393cac60, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 65
+      value: 117.340065
       objectReference: {fileID: 0}
     - target: {fileID: 8968258265492319015, guid: 497d5c774c3ce4f1ca5df896393cac60, type: 3}
       propertyPath: m_AnchoredPosition.y

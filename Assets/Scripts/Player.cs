@@ -7,18 +7,18 @@ public class Player : MonoBehaviour
 
     public int Hp { get; private set; }
     public int Stamina { get; private set; }
+    public int MaxHp { get; private set; }
 
     private void Awake()
     {
-        Hp = maxHp;
-        Stamina = maxStamina;
-        Debug.Log($"Player HP = {Hp} / {maxHp}, Stamina = {Stamina} / {maxStamina}");
+        ResetStats();
     }
 
     public void ResetStats()
     {
         Hp = maxHp;
         Stamina = maxStamina;
+        MaxHp = maxHp;
         Debug.Log($"Player HP = {Hp} / {maxHp}, Stamina = {Stamina} / {maxStamina}");
     }
 
