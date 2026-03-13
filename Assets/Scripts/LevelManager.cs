@@ -15,6 +15,14 @@ public class LevelManager : MonoBehaviour
     [Header("Selected words are provided by the start screen")]
     [SerializeField] private List<string> selectedWords = new List<string>();
 
+    [Header("Score Weights")]
+    [SerializeField] private float scoreMultiplier = 1000f;
+    [SerializeField] private float wordsWeight = 1f;
+    [SerializeField] private float hpWeight = 1f;
+    [SerializeField] private float timeWeight = 1f;
+
+    public float LastFightScore { get; private set; }
+
     [Header("Boss Fight Queue")]
     [SerializeField] private int bagsToPreload = 30;
 
@@ -24,6 +32,7 @@ public class LevelManager : MonoBehaviour
     public IReadOnlyList<string> SelectedWords => selectedWords;
 
     private readonly Queue<string> fightQueue = new Queue<string>();
+    private float fightStartTime;
 
     private void Awake()
     {
@@ -105,9 +114,21 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void CalculateScore()
+    {
+        var player = FindFirstObjectByType<Player>();
+        float timeTaken = Mathf.Max(Time.time - fightStartTime, 0.1f);
+        float hpPercentage = (player != null) ? (float) player.Hp / player.MaxHp : 0f;
+
+        LastFightScore = scoreMultiplier * (selectedWords.Count * wordsWeight) * (hpPercentage * hpWeight) / (timeTaken * timeWeight);
+        LastFightScore = Mathf.Max(LastFightScore, 1f);
+        Debug.Log($"Score: {LastFightScore:F0} (words={selectedWords.Count}, hp%={hpPercentage:P0}, time={timeTaken:F1}s)");
+    }
+
     public void StartBossFight()
     {
         PrepareBossFightQueue();
+        fightStartTime = Time.time;
 
         var spawner = FindFirstObjectByType<WordSpawnManager>();
         if (spawner != null) spawner.StartBossFight();
@@ -131,6 +152,7 @@ public class LevelManager : MonoBehaviour
         if (webcamTextire != null) webcamTextire.Stop();
 
         if (wonBattle) {
+            CalculateScore();
             SceneManager.LoadScene(victorySceneName);
         } else {
             SceneManager.LoadScene(defeatSceneName);
