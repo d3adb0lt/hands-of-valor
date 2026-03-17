@@ -27,6 +27,11 @@ public class WordSpawnManager : MonoBehaviour
     [Header("Player")]
     [SerializeField] private Player player;
 
+    [Header("VFX")]
+    [SerializeField] private SlashVFX slashLeftPrefab; 
+    [SerializeField] private SlashVFX slashRightPrefab; 
+    [SerializeField] private SlashVFX criticalSlashPrefab; 
+
     private readonly Dictionary<WordSlot, Coroutine> expiry = new Dictionary<WordSlot, Coroutine>();
 
     private readonly Queue<string> recognizedInbox = new Queue<string>();
@@ -233,6 +238,8 @@ public class WordSpawnManager : MonoBehaviour
         bool wasCritical = chosen.Kind == WordSlot.WordKind.Critical;
         bool wasParry = chosen.Kind == WordSlot.WordKind.Parry;
 
+        SpawnSlashVFX(chosen);
+
         chosen.Clear();
 
         if (expiry.TryGetValue(chosen, out Coroutine routine) && routine != null)
@@ -258,6 +265,28 @@ public class WordSpawnManager : MonoBehaviour
             {
                 LevelManager.Instance.StopBossFight(wonBattle: true);
             }
+        }
+    }
+
+    private void SpawnSlashVFX(WordSlot slot)
+    {
+        if (slot == null) return;
+        if (slot.Kind == WordSlot.WordKind.Parry) return;
+
+        SlashVFX prefab = slot.Kind == WordSlot.WordKind.Critical
+            ? criticalSlashPrefab
+            : (Random.value < 0.5f ? slashLeftPrefab : slashRightPrefab);
+
+        if (prefab == null) return;
+
+        var vfx = Instantiate(prefab, slot.transform, false);
+        var rect = vfx.GetComponent<RectTransform>();
+
+        if (rect != null)
+        {
+            rect.anchoredPosition = Vector2.zero;
+            rect.localRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+            rect.localScale = new Vector3(0.5f, 0.5f, 1f);
         }
     }
 

@@ -587,6 +587,9 @@ MonoBehaviour:
   parryChance: 0.2
   bossHealth: {fileID: 0}
   player: {fileID: 0}
+  slashLeftPrefab: {fileID: 8759952366212979014, guid: cc1be6ae472670444bec4042942b2c8a, type: 3}
+  slashRightPrefab: {fileID: 7629870984774904325, guid: f9802349a507e704099e3e25656aa120, type: 3}
+  criticalSlashPrefab: {fileID: 3507488643796379168, guid: cd38ad3154299454196905b2dcdb9c00, type: 3}
 --- !u!4 &378209838
 Transform:
   m_ObjectHideFlags: 0
