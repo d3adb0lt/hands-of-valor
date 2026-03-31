@@ -4,6 +4,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int maxHp = 5;
     [SerializeField] private int maxStamina = 5;
+    [SerializeField] private BarUI hpBar;
+    [SerializeField] private BarUI staminaBar;
 
     public int Hp { get; private set; }
     public int Stamina { get; private set; }
@@ -19,6 +21,8 @@ public class Player : MonoBehaviour
         Hp = maxHp;
         Stamina = maxStamina;
         MaxHp = maxHp;
+        hpBar.SetMaxValue(maxHp);
+        staminaBar.SetMaxValue(maxStamina);
         Debug.Log($"Player HP = {Hp} / {maxHp}, Stamina = {Stamina} / {maxStamina}");
     }
 
@@ -45,12 +49,14 @@ public class Player : MonoBehaviour
     private void UseStamina(int amount)
     {
         Stamina = Mathf.Max(0, Stamina - amount);
+        staminaBar.SetValue(Stamina);
         Debug.Log($"Player stamina = {Stamina} / {maxStamina}");
     }
 
     private void TakeDamage(int amount)
     {
         Hp = Mathf.Max(0, Hp - amount);
+        hpBar.SetValue(Hp);
         Debug.Log($"Player HP = {Hp} / {maxHp}");
 
         if (Hp <= 0)

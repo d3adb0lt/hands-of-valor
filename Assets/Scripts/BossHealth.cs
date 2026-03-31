@@ -3,14 +3,14 @@ using UnityEngine;
 public class BossHealth : MonoBehaviour
 {
     [SerializeField] private int maxHp = 10;
-    [SerializeField] private BossHealthBarUI hpBar;
+    [SerializeField] private BarUI hpBar;
     
     public int CurrentHp { get; private set; }
 
     private void Awake()
     {
         CurrentHp = maxHp;
-        hpBar.setMaxHealth(maxHp);
+        hpBar.SetMaxValue(maxHp);
         Debug.Log("Boss HP = " + CurrentHp + " / " + maxHp);
     }
 
@@ -22,7 +22,7 @@ public class BossHealth : MonoBehaviour
         CurrentHp -= amount;
         if (CurrentHp < 0) CurrentHp = 0;
 
-        hpBar.setHealth(CurrentHp);
+        hpBar.SetValue(CurrentHp);
 
         Debug.Log("Damaged boss. HP = " + CurrentHp + " / " + maxHp);
 
