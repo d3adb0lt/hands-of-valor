@@ -16,23 +16,14 @@ public class DodgeSlot : MonoBehaviour
         if (label == null) label = GetComponentInChildren<TMP_Text>(true);
     }
 
-private void Awake()
-{
-    if (label == null) label = GetComponentInChildren<TMP_Text>(true);
-    if (animationDemo == null) animationDemo = GetComponent<ScourgeAttack>();
-    if (animationDemo == null) animationDemo = GetComponentInChildren<ScourgeAttack>(true);
-    if (animationDemo == null) animationDemo = GetComponentInParent<ScourgeAttack>();
-
-    Debug.Log($"[DodgeSlot] Awake on {gameObject.name}");
-    Debug.Log($"[DodgeSlot] animationDemo assigned? {animationDemo != null}");
-
-    Clear();
-}
+    private void Awake()
+    {
+        if (label == null) label = GetComponentInChildren<TMP_Text>(true);
+        Clear();
+    }
 
     public void SetWord(string word)
     {
-        Debug.Log($"[DodgeSlot] SetWord({word})");
-
         CurrentWord = word ?? "";
 
         if (label != null)
@@ -42,42 +33,32 @@ private void Awake()
         }
     }
 
-public void Clear()
-{
-    Debug.Log($"[DodgeSlot] Clear() called on {gameObject.name}. CurrentWord = '{CurrentWord}'");
-
-    if (suppressNextClearAnimation)
+    public void Clear()
     {
-        suppressNextClearAnimation = false;
-    }
-    else
-    {
-        PlayAnimation();
-    }
-
-    CurrentWord = "";
-
-    if (label != null)
-    {
-        label.text = "";
-        label.gameObject.SetActive(false);
-    }
-
-    Debug.Log("[DodgeSlot] Clear() finished");
-}
-
-    private void PlayAnimation()
-    {
-        Debug.Log($"[DodgeSlot] PlayAnimation() animationDemo assigned? {animationDemo != null}");
-
-        if (animationDemo != null)
+        if (suppressNextClearAnimation)
         {
-            Debug.Log("[DodgeSlot] Calling ScourgeAttack.Play()");
-            animationDemo.Play();
+            suppressNextClearAnimation = false;
         }
         else
         {
-            Debug.LogWarning("[DodgeSlot] animationDemo is NULL");
+            PlayAnimation();
+        }
+
+        CurrentWord = "";
+
+        if (label != null)
+        {
+            label.text = "";
+            label.gameObject.SetActive(false);
+        }
+
+    }
+
+    private void PlayAnimation()
+    {
+        if (animationDemo != null)
+        {
+            animationDemo.Play();
         }
     }
 }
