@@ -30,7 +30,14 @@ public class WordSpawnManager : MonoBehaviour
     [Header("VFX")]
     [SerializeField] private SlashVFX slashLeftPrefab; 
     [SerializeField] private SlashVFX slashRightPrefab; 
-    [SerializeField] private SlashVFX criticalSlashPrefab; 
+    [SerializeField] private SlashVFX criticalSlashPrefab;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip normalAttackSfx;
+    [SerializeField] private AudioClip criticalAttackSfx;
+    [SerializeField] private AudioClip parrySfx;
+    [SerializeField] private float criticalRepeatDelay = 0.1f;
 
     private readonly Dictionary<WordSlot, Coroutine> expiry = new Dictionary<WordSlot, Coroutine>();
 
@@ -238,6 +245,7 @@ public class WordSpawnManager : MonoBehaviour
         bool wasCritical = chosen.Kind == WordSlot.WordKind.Critical;
         bool wasParry = chosen.Kind == WordSlot.WordKind.Parry;
 
+        PlayWordSfx(wasCritical, wasParry);
         SpawnSlashVFX(chosen);
 
         chosen.Clear();
@@ -288,6 +296,35 @@ public class WordSpawnManager : MonoBehaviour
             rect.localRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
             rect.localScale = new Vector3(0.5f, 0.5f, 1f);
         }
+    }
+
+    private void PlayWordSfx(bool wasCritical, bool wasParry)
+    {
+        if (sfxSource == null) return;
+
+        if (wasParry)
+        {
+            if (parrySfx != null)
+                sfxSource.PlayOneShot(parrySfx);
+            return;
+        }
+
+        if (wasCritical)
+        {
+            if (criticalAttackSfx != null)
+                StartCoroutine(PlayCriticalTwice());
+            return;
+        }
+
+        if (normalAttackSfx != null)
+            sfxSource.PlayOneShot(normalAttackSfx);
+    }
+
+    private IEnumerator PlayCriticalTwice()
+    {
+        sfxSource.PlayOneShot(criticalAttackSfx);
+        yield return new WaitForSeconds(criticalRepeatDelay);
+        sfxSource.PlayOneShot(criticalAttackSfx);
     }
 
     private void ClearAll()

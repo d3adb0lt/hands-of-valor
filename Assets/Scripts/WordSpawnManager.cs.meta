@@ -1,2 +1,20 @@
 fileFormatVersion: 2
 guid: 511370df884799f449a49f2595cca2e1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bossHealth: {instanceID: 0}
+  - player: {instanceID: 0}
+  - slashLeftPrefab: {instanceID: 0}
+  - slashRightPrefab: {instanceID: 0}
+  - criticalSlashPrefab: {instanceID: 0}
+  - sfxSource: {instanceID: 0}
+  - normalAttackSfx: {fileID: 8300000, guid: 81aba37d9f4169442a3175b4ec89c1ab, type: 3}
+  - criticalAttackSfx: {fileID: 8300000, guid: 81aba37d9f4169442a3175b4ec89c1ab, type: 3}
+  - parrySfx: {fileID: 8300000, guid: 81aba37d9f4169442a3175b4ec89c1ab, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
