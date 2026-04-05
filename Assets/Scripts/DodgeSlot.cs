@@ -5,9 +5,12 @@ public class DodgeSlot : MonoBehaviour
 {
     [SerializeField] private TMP_Text label;
 
+    [Header("Animation")]
+    [SerializeField] private ScourgeAttack animationDemo;
+
     public string CurrentWord { get; private set; } = "";
     public bool IsFilled => !string.IsNullOrEmpty(CurrentWord);
-
+    private bool suppressNextClearAnimation = true;
     private void Reset()
     {
         if (label == null) label = GetComponentInChildren<TMP_Text>(true);
@@ -32,12 +35,30 @@ public class DodgeSlot : MonoBehaviour
 
     public void Clear()
     {
+        if (suppressNextClearAnimation)
+        {
+            suppressNextClearAnimation = false;
+        }
+        else
+        {
+            PlayAnimation();
+        }
+
         CurrentWord = "";
 
         if (label != null)
         {
             label.text = "";
             label.gameObject.SetActive(false);
+        }
+
+    }
+
+    private void PlayAnimation()
+    {
+        if (animationDemo != null)
+        {
+            animationDemo.Play();
         }
     }
 }
