@@ -1633,6 +1633,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619217550}
   m_CullTransparentMesh: 1
+--- !u!1 &637925139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 637925141}
+  - component: {fileID: 637925140}
+  m_Layer: 0
+  m_Name: ScourgeAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &637925140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637925139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b50d5616f7294cedbd4eb5a326be60c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScourgeAttack
+  _animator: {fileID: 2028262418}
+  preAttackBuffer: 0.05
+--- !u!4 &637925141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637925139}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 624.9836, y: 1579.5961, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2028262416}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &680253588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,6 +2405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DodgeSlot
   label: {fileID: 612847091}
+  animationDemo: {fileID: 637925140}
 --- !u!114 &1293477881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3270,7 +3317,6 @@ GameObject:
   - component: {fileID: 2028262416}
   - component: {fileID: 2028262417}
   - component: {fileID: 2028262418}
-  - component: {fileID: 2028262419}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -3293,6 +3339,7 @@ Transform:
   m_Children:
   - {fileID: 423832932}
   - {fileID: 1845031246}
+  - {fileID: 637925141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2028262417
@@ -3376,20 +3423,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2028262419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028262414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b50d5616f7294cedbd4eb5a326be60c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _animator: {fileID: 0}
-  preAttackBuffer: 0.05
 --- !u!1 &2040193363
 GameObject:
   m_ObjectHideFlags: 0
