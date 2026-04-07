@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int maxStamina = 5;
     [SerializeField] private BarUI hpBar;
     [SerializeField] private BarUI staminaBar;
+    [SerializeField] private DamageFlash damageFlash;
 
     public int Hp { get; private set; }
     public int Stamina { get; private set; }
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
 
         if (Stamina <= 0)
         {
+            damageFlash.FlashRed();
             TakeDamage(1);
             return;
         }
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            damageFlash.FlashRed();
             TakeDamage(1);
         }
     }
