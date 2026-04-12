@@ -28,7 +28,6 @@ public class BossHealth : MonoBehaviour
 
         if (CurrentHp == 0)
         {
-            LevelManager.Instance.StopBossFight(wonBattle: true);
             Debug.Log("Boss defeated.");
         }
     }
