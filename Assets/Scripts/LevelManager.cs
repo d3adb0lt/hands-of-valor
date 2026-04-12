@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,6 +29,9 @@ public class LevelManager : MonoBehaviour
 
     [Tooltip("When the queue falls below this number, a new shuffled bag is appended.")]
     [SerializeField] private int refillThreshold = 5;
+
+    [Tooltip("Seconds to wait after the killing blow so the slash VFX can finish.")]
+    [SerializeField] private float victoryTransitionDelay = 0.5f;
 
     public IReadOnlyList<string> SelectedWords => selectedWords;
 
@@ -153,10 +157,15 @@ public class LevelManager : MonoBehaviour
 
         if (wonBattle) {
             CalculateScore();
-            SceneManager.LoadScene(victorySceneName);
+            StartCoroutine(LoadSceneAfterDelay(victorySceneName, victoryTransitionDelay));
         } else {
             SceneManager.LoadScene(defeatSceneName);
         }
-        
+    }
+
+    private IEnumerator LoadSceneAfterDelay(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
     }
 }
