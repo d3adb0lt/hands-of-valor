@@ -1657,7 +1657,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451198306}
-  - component: {fileID: 1451198305}
+  - component: {fileID: 1451198307}
+  - component: {fileID: 1451198308}
   m_Layer: 0
   m_Name: SceneMusic
   m_TagString: Untagged
@@ -1665,7 +1666,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &1451198305
+--- !u!4 &1451198306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451198304}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 105.64493, y: 410.66855, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1451198307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451198304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662ab261f67e1aa42a13772b5b2ceb95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicCycler
+  audioSource: {fileID: 1451198308}
+  songs:
+  - {fileID: 8300000, guid: 8c9c8ea9e6c55334dbd5682ce63cb29f, type: 3}
+  - {fileID: 8300000, guid: fda512a699f823a439ba64685e185d05, type: 3}
+  - {fileID: 8300000, guid: 60d2567df761df646859c7f5a3f3f181, type: 3}
+--- !u!82 &1451198308
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1676,11 +1709,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: e5cde52f9dd2add48a9c7684bc21d155, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1762,21 +1795,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1451198306
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451198304}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 105.64493, y: 410.66855, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603468435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,6 +2589,7 @@ MonoBehaviour:
   timeWeight: 1
   bagsToPreload: 30
   refillThreshold: 5
+  victoryTransitionDelay: 0.5
 --- !u!4 &2114406931
 Transform:
   m_ObjectHideFlags: 0
