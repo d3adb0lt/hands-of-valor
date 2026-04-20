@@ -761,7 +761,7 @@ MonoBehaviour:
   sfxSource: {fileID: 1051427694}
   normalAttackSfx: {fileID: 8300000, guid: 81aba37d9f4169442a3175b4ec89c1ab, type: 3}
   criticalAttackSfx: {fileID: 8300000, guid: 81aba37d9f4169442a3175b4ec89c1ab, type: 3}
-  parrySfx: {fileID: 8300000, guid: 81aba37d9f4169442a3175b4ec89c1ab, type: 3}
+  parrySfx: {fileID: 8300000, guid: 98fc6e0f132c5274895a7be9908e0cb7, type: 3}
   criticalRepeatDelay: 0.1
 --- !u!4 &378209838
 Transform:
