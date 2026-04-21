@@ -1,17 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartScreenController : MonoBehaviour
 {
     [SerializeField] private string bossFightSceneName = "BossTemplateScene";
     [SerializeField] private StartScreenListPopulator listPopulator;
 
+    [Header("No-Selection Popup")]
+    [SerializeField] private GameObject noSelectionPopup;
+    [SerializeField] private Button noSelectionPopupCloseButton;
+
     private bool waitingForBossScene;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
+        if (noSelectionPopup != null) noSelectionPopup.SetActive(false);
+
+        if (noSelectionPopupCloseButton != null)
+        {
+            noSelectionPopupCloseButton.onClick.RemoveListener(HideNoSelectionPopup);
+            noSelectionPopupCloseButton.onClick.AddListener(HideNoSelectionPopup);
+        }
     }
 
     private void OnEnable()
@@ -42,6 +55,7 @@ public class StartScreenController : MonoBehaviour
 
         if (selected == null || selected.Count == 0)
         {
+            if (noSelectionPopup != null) noSelectionPopup.SetActive(true);
             return;
         }
 
@@ -67,5 +81,10 @@ public class StartScreenController : MonoBehaviour
         LevelManager.Instance.StartBossFight();
 
         Destroy(gameObject);
+    }
+
+    private void HideNoSelectionPopup()
+    {
+        if (noSelectionPopup != null) noSelectionPopup.SetActive(false);
     }
 }
