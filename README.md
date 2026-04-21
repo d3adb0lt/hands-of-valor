@@ -38,7 +38,7 @@ This is a Unity game prototype where the player fights a boss by performing sign
 
 1. In Unity Hub, click **Add** and select the repository folder.
 2. Open the project using the Unity version from `ProjectSettings/ProjectVersion.txt`.
-3. Set your aspect ratio to **9:16**.
+3. Use a phone simulator such as `Apple iPhone 13 Pro`.
 
 ### Run the Game in Editor
 
@@ -49,11 +49,10 @@ This is a Unity game prototype where the player fights a boss by performing sign
 
 ### Build Settings
 
-1. Go to **File** then **Build Settings**.
-2. Ensure these scenes are added to the build list in this order:
-   1. `StartScreenScene`
-   2. `BossTemplateScene`
-3. If a scene fails to load at runtime, it usually means the scene is not in the build list or the name in code does not match.
+1. Go to **File** then **Build Profiles**.
+2. Select the iOS or Android profile under **Build Profiles** (not **Platforms**).
+3. Click on **Switch Profile**.
+4. Click **Build**.
 
 ## Repository Map
 
