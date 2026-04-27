@@ -60,6 +60,8 @@ This is a Unity game prototype where the player fights a boss by performing sign
 
 - **`Assets/Scenes/StartScreenScene.unity`** — Start screen UI. Includes the sign selection list, filter input, preview overlay, and the Start button.
 - **`Assets/Scenes/BossTemplateScene.unity`** — Boss fight template scene. Contains the boss, word slots UI, dodge slot UI, and managers. `SimpleSLREngine` is present here.
+- **`Assets/Scenes/VictoryScene.unity`** — Victory screen shown after the boss is defeated. Has a button that returns to the start screen.
+- **`Assets/Scenes/DefeatScene.unity`** — Defeat screen shown when the player is defeated. Has a button that returns to the start screen.
 
 ### Data and Content
 
@@ -75,12 +77,14 @@ This is a Unity game prototype where the player fights a boss by performing sign
 
 ### Core Gameplay Scripts
 
-- **`Assets/Scripts/LevelManager.cs`** — Singleton that persists across scenes. Receives the player selected word list from the start screen. Builds and refills the shuffled fight queue using bags so all words appear before repeats. Starts and stops the fight. Stop loads `StartScreenScene`.
-- **`Assets/Scripts/WordSpawnManager.cs`** — Controls the main word slots. Spawns rounds, handles expiration timers, and clears words when recognized. Implements critical word chance and shorter lifetime. Applies boss damage when a normal slot is signed successfully. Enforces dodge priority so the dodge word clears first if duplicated.
-- **`Assets/Scripts/BossAttackManager.cs`** — Controls the dodge slot. Spawns dodge words at random intervals with an initial delay. Clears dodge words when recognized.
-- **`Assets/Scripts/WordSlot.cs`** — UI slot for normal words. Tracks current word and critical state. Sets text and changes color to red for critical words.
+- **`Assets/Scripts/LevelManager.cs`** — Singleton that persists across scenes. Receives the player selected word list from the start screen. Builds and refills the shuffled fight queue using bags so all words appear before repeats. Starts and stops the fight, pauses the recognizer engine and webcam on stop, and loads the victory or defeat scene depending on the outcome.
+- **`Assets/Scripts/WordSpawnManager.cs`** — Controls the main word slots. Spawns rounds, handles expiration timers, and clears words when recognized. Implements critical and parry word chances and shorter critical lifetime. Applies boss damage when a normal or critical slot is signed successfully, and resolves the parry against the player when a parry slot is signed. Enforces dodge priority so the dodge word clears first if duplicated.
+- **`Assets/Scripts/BossAttackManager.cs`** — Controls the dodge slot. Spawns dodge words at random intervals with an initial delay. Clears dodge words when recognized and resolves each boss attack against the player on dodge or expiry.
+- **`Assets/Scripts/WordSlot.cs`** — UI slot for normal words. Tracks current word and word kind (Normal, Critical, Parry). Sets text color to red for critical words and yellow for parry words.
 - **`Assets/Scripts/DodgeSlot.cs`** — UI slot for dodge words. Tracks current word and shows or clears it.
-- **`Assets/Scripts/BossHealth.cs`** — Tracks boss HP. On reaching 0, stops the fight and transitions back to the start screen.
+- **`Assets/Scripts/BossHealth.cs`** — Tracks boss HP. The win transition itself lives in the level manager, which is invoked by the spawn manager when boss HP reaches 0.
+- **`Assets/Scripts/Player.cs`** — Tracks player HP and stamina. Consumes stamina on a successful dodge, takes damage on a failed dodge or when stamina is empty, and resolves parry words by spending stamina or HP. Triggers the defeat transition through the level manager when HP hits 0.
+- **`Assets/Scripts/PauseManager.cs`** — Pause menu controller. Halts game time, pauses the recognizer engine and webcam, shows the pause panel, and provides a quit-to-menu action.
 
 ### If You Are Looking for X, Go Here
 
@@ -92,9 +96,13 @@ This is a Unity game prototype where the player fights a boss by performing sign
 | Video preview playback | `Assets/Scripts/StartScreenListPopulator.cs` and the VideoPlayer in `StartScreenScene` |
 | Word spawning and timers | `Assets/Scripts/WordSpawnManager.cs` |
 | Dodge spawning and timing ranges | `Assets/Scripts/BossAttackManager.cs` |
-| Boss HP and win condition | `Assets/Scripts/BossHealth.cs` |
+| Boss HP and win condition | `Assets/Scripts/BossHealth.cs`, `Assets/Scripts/LevelManager.cs` |
+| Player HP, stamina, and parry resolution | `Assets/Scripts/Player.cs` |
+| Critical and parry word chances and timers | `Assets/Scripts/WordSpawnManager.cs` |
 | Word queue creation and refill logic | `Assets/Scripts/LevelManager.cs` |
 | Start button flow and scene load | `Assets/Scripts/StartScreenController.cs` |
+| Victory and defeat scene transitions | `Assets/Scripts/LevelManager.cs` |
+| Pause menu and quit-to-menu | `Assets/Scripts/PauseManager.cs` |
 | UI behavior of a slot | `Assets/Scripts/WordSlot.cs`, `Assets/Scripts/DodgeSlot.cs` |
 
 ## Toolkit Integration Summary
@@ -126,7 +134,7 @@ High level flow:
 ## Common Fixes and Troubleshooting
 
 1. If words do not spawn, ensure you have added words in the Level Manager inspector.
-2. If the scene does not transition to the boss fight scene when start is clicked, ensure that the scene order is Start Screen at 0 and Boss Fight at 1 in build settings.
+2. If a scene transition does not happen (start does not load the boss fight, or the boss fight does not load the victory or defeat screen), make sure all four scenes are added to build settings: `StartScreenScene`, `BossTemplateScene`, `VictoryScene`, and `DefeatScene`.
 3. If the camera does not appear, restart Unity.
 4. If there are numerous console errors when starting the game from the boss fight scene, click stop and then start the game from the start screen.
 5. If words spawn too fast or too slow, edit the timers in the Word Spawn Manager inspector.
